@@ -1,34 +1,29 @@
 <?php
 
-
 function cr_get_posts() {
     global $wpdb;
 
-    $git = $wpdb->prefix."mobilAppSettings";
-    $settingsAnaCek = $wpdb->get_results("SELECT * FROM  {$git} WHERE id = 1" );
-    foreach ($settingsAnaCek as $listele) {
+    $git = $wpdb->prefix."curlyapp_settings";
+    $get_settings = $wpdb->get_results("SELECT * FROM  {$git} WHERE id = 1" );
+    foreach ($get_settings as $settings_f) {
         $settings[] = array(
-            'id' =>  $listele->id,
-            'app_name' => $listele->uygAdi,
-            'logo_url' => $listele->logourl,
-            'post_style' => $listele->postStil
+            'id' =>  $settings_f->id,
+            'app_name' => $settings_f->app_name,
+            'logo_url' => $settings_f->logo_url,
+            'post_style' => $settings_f->post_style
         );
-        $id = $listele->id;
-        $uygAdi = $listele->uygAdi;
-        $logourl = $listele->logourl;
-        $postStil = $listele->postStil;
+        $logo_url = $settings_f->logo_url;
+        $post_style = $settings_f->post_style;
     }
 
-    $git = $wpdb->prefix."mobilAppKategoriAyarSettings";
+    $git = $wpdb->prefix."curlyapp_category_settings";
     $data = $wpdb->get_results("SELECT * FROM  {$git}" );
 
     if ( $data ){
-
-        # code...
         $args_query = array(
             'order'          => 'DESC',
-            'cat'            => $data[0]->manset, // Buraya kategori ID si
-            'posts_per_page' => 3, // Burayı unutmuşuz. Çekilecek yazı adeti
+            'cat'            => $data[0]->manset, // Kategori ID si
+            'posts_per_page' => 3, // Çekilecek yazı adeti
         );
         $query = new WP_Query( $args_query );
         $manset = array();
@@ -52,9 +47,9 @@ function cr_get_posts() {
                     'id' =>  $icerik_id, //
                     'title' => $title, //
                     'url' => $url, //
-                    'logourl' => $logourl, //
-                    'postStil' => $postStil, //
-                    'icerik' => $icerik, //
+                    'logo_url' => $logo_url, //
+                    'post_style' => $post_style, //
+                    'content' => $icerik, //
                     'thumbnail_small' => $yazi_gorseli_medium, //
                     'thumbnail_full' => $yazi_gorseli_normal, //
                     'date' => $tarih, //
@@ -66,11 +61,10 @@ function cr_get_posts() {
             }
         }
 
-        # code...
         $args_query = array(
             'order'          => 'DESC',
-            'cat'            => $data[0]->mansetAlt, // Buraya kategori ID si
-            'posts_per_page' => 3, // Burayı unutmuşuz. Çekilecek yazı adeti
+            'cat'            => $data[0]->mansetAlt, // Kategori ID si
+            'posts_per_page' => 3, // Çekilecek yazı adeti
         );
         $query = new WP_Query( $args_query );
         $mansetalt = array();
@@ -91,13 +85,12 @@ function cr_get_posts() {
                 $yazar_gorseli = get_avatar( get_the_author_meta( 'email' ), 100 ); // 100 değeri boyut. Gravatar dan çekilir.
                 // Post bilgileri bitiş
                 $mansetalt[] = array(
-
                     'id' =>  $icerik_id, //
-                    'url' => $url, //
                     'title' => $title, //
-                    'postStil' => $postStil, //
-                    'logourl' => $logourl, //
-                    'icerik' => $icerik, //
+                    'url' => $url, //
+                    'logo_url' => $logo_url, //
+                    'post_style' => $post_style, //
+                    'content' => $icerik, //
                     'thumbnail_small' => $yazi_gorseli_medium, //
                     'thumbnail_full' => $yazi_gorseli_normal, //
                     'date' => $tarih, //
@@ -109,11 +102,10 @@ function cr_get_posts() {
             }
         }
 
-        # code...
         $args_query = array(
             'order'          => 'DESC',
-            'cat'            => $data[0]->hikayeBuyuk, // Buraya kategori ID si
-            'posts_per_page' => 3, // Burayı unutmuşuz. Çekilecek yazı adeti
+            'cat'            => $data[0]->hikayeBuyuk, // Kategori ID si
+            'posts_per_page' => 3, // Çekilecek yazı adeti
         );
         $query = new WP_Query( $args_query );
         $hikayeBuyuk = array();
@@ -137,9 +129,9 @@ function cr_get_posts() {
                     'id' =>  $icerik_id, //
                     'title' => $title, //
                     'url' => $url, //
-                    'logourl' => $logourl, //
-                    'postStil' => $postStil, //
-                    'icerik' => $icerik, //
+                    'logo_url' => $logo_url, //
+                    'post_style' => $post_style, //
+                    'content' => $icerik, //
                     'thumbnail_small' => $yazi_gorseli_medium, //
                     'thumbnail_full' => $yazi_gorseli_normal, //
                     'date' => $tarih, //
@@ -155,8 +147,8 @@ function cr_get_posts() {
         # code...
         $args_query = array(
             'order'          => 'DESC',
-            'cat'            => $data[0]->hikayeAlt, // Buraya kategori ID si
-            'posts_per_page' => 3, // Burayı unutmuşuz. Çekilecek yazı adeti
+            'cat'            => $data[0]->hikayeAlt, // kategori ID si
+            'posts_per_page' => 3, // Çekilecek yazı adeti
         );
         $query = new WP_Query( $args_query );
         $hikayeAlt = array();
@@ -177,12 +169,12 @@ function cr_get_posts() {
                 $yazar_gorseli = get_avatar( get_the_author_meta( 'email' ), 100 ); // 100 değeri boyut. Gravatar dan çekilir.
                 // Post bilgileri bitiş
                 $hikayeAlt[] = array(
-                    'id' =>  $icerik_id,
-                    'url' => $url, //
+                    'id' =>  $icerik_id, //
                     'title' => $title, //
-                    'logourl' => $logourl, //
-                    'postStil' => $postStil, //
-                    'icerik' => $icerik, //
+                    'url' => $url, //
+                    'logo_url' => $logo_url, //
+                    'post_style' => $post_style, //
+                    'content' => $icerik, //
                     'thumbnail_small' => $yazi_gorseli_medium, //
                     'thumbnail_full' => $yazi_gorseli_normal, //
                     'date' => $tarih, //
@@ -206,5 +198,4 @@ function cr_get_posts() {
         $settings
     );
     return $son;
-
 }

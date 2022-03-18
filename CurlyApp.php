@@ -10,12 +10,15 @@ Author URI: http://berkaycatak.com
 License: A "Slug" license name e.g. GPL2
 */
 
-global $wpdb;
+// init dosyası import ediliyor
 require_once __DIR__ . "/init.php";
-require_once __DIR__ . '/lib/menu.php';
+
+// gerekli tablolar oluşturuluyor
+create_tables();
 
 add_action( 'rest_api_init', 'add_thumbnail_to_JSON' );
 add_action( 'rest_api_init', 'add_posts_api' );
+add_action( 'rest_api_init', 'add_category_posts_api' );
 
 function add_thumbnail_to_JSON() {
 //Add featured image
@@ -47,72 +50,10 @@ function add_posts_api() {
     ) );
 }
 
-if ($wpdb->get_var("SHOW TABLES LIKE '{$wpdb->prefix}mobilAppSettings'") != $wpdb->prefix . 'mobilAppSettings') {
-    $wpdb->query("CREATE TABLE {$wpdb->prefix}mobilAppSettings(
-		id INT NOT NULL AUTO_INCREMENT,
-		uygAdi VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
-		logourl TEXT CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
-		postStil INT NOT NULL,
-		PRIMARY KEY (id)
-	);");
-
-    $wpdb->insert("{$wpdb->prefix}mobilAppSettings", array("uygAdi" => '', "logourl" => ''));
-
+function add_category_posts_api() {
+    register_rest_route( 'curlyapp/v1', '/category-posts', array(
+        'methods'  => WP_REST_Server::READABLE,
+        'callback' => 'cr_get_category_posts',
+        'args'     => array(),
+    ) );
 }
-
-if ($wpdb->get_var("SHOW TABLES LIKE '{$wpdb->prefix}mobilAppSosyalMedyaSettings'") != $wpdb->prefix . 'mobilAppSosyalMedyaSettings') {
-    $wpdb->query("CREATE TABLE {$wpdb->prefix}mobilAppSosyalMedyaSettings(
-		id INT NOT NULL AUTO_INCREMENT,
-		instagram VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
-		twitter VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
-		pinterest VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
-		facebook VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
-		PRIMARY KEY (id)
-	);");
-
-    $wpdb->insert("{$wpdb->prefix}mobilAppSosyalMedyaSettings", array(
-        "instagram" => '',
-        "twitter" => '',
-        "pinterest" => '',
-        "facebook" => ''
-    ));
-
-}
-
-if ($wpdb->get_var("SHOW TABLES LIKE '{$wpdb->prefix}mobilAppKategorilerSettings'") != $wpdb->prefix . 'mobilAppKategorilerSettings') {
-    $wpdb->query("CREATE TABLE {$wpdb->prefix}mobilAppKategorilerSettings(
-		id INT NOT NULL AUTO_INCREMENT,
-		kategoriid INT NOT NULL,
-		PRIMARY KEY (id)
-	);");
-}
-
-if ($wpdb->get_var("SHOW TABLES LIKE '{$wpdb->prefix}mobilAppSayfalarSettings'") != $wpdb->prefix . 'mobilAppSayfalarSettings') {
-    $wpdb->query("CREATE TABLE {$wpdb->prefix}mobilAppSayfalarSettings(
-		id INT NOT NULL AUTO_INCREMENT,
-		sayfaid INT NOT NULL,
-		PRIMARY KEY (id)
-	);");
-}
-
-if ($wpdb->get_var("SHOW TABLES LIKE '{$wpdb->prefix}mobilAppKategoriAyarSettings'") != $wpdb->prefix . 'mobilAppKategoriAyarSettings') {
-    $wpdb->query("CREATE TABLE {$wpdb->prefix}mobilAppKategoriAyarSettings(
-		id INT NOT NULL AUTO_INCREMENT,
-		manset INT NOT NULL,
-		mansetAlt INT NOT NULL,
-		hikayeBuyuk INT NOT NULL,
-		hikayeAlt INT NOT NULL,
-		PRIMARY KEY (id)
-	);");
-
-    $wpdb->insert("{$wpdb->prefix}mobilAppKategoriAyarSettings", array(
-        "manset" => '',
-        "mansetAlt" => '',
-        "hikayeBuyuk" => '',
-        "hikayeAlt" => ''
-    ));
-
-
-
-}
-
