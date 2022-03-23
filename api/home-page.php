@@ -12,6 +12,7 @@ function cr_get_posts() {
             'logo_url' => $settings_f->logo_url,
             'post_style' => $settings_f->post_style
         );
+        $app_name = $settings_f->app_name;
         $logo_url = $settings_f->logo_url;
         $post_style = $settings_f->post_style;
     }
@@ -23,7 +24,7 @@ function cr_get_posts() {
         $args_query = array(
             'order'          => 'DESC',
             'cat'            => $data[0]->manset, // Kategori ID si
-            'posts_per_page' => 3, // Çekilecek yazı adeti
+            'posts_per_page' => 4, // Çekilecek yazı adeti
         );
         $query = new WP_Query( $args_query );
         $manset = array();
@@ -47,13 +48,14 @@ function cr_get_posts() {
                     'id' =>  $icerik_id, //
                     'title' => $title, //
                     'url' => $url, //
+                    'app_name' => $app_name, //
                     'logo_url' => $logo_url, //
                     'post_style' => $post_style, //
                     'content' => $icerik, //
-                    'thumbnail_small' => $yazi_gorseli_medium, //
-                    'thumbnail_full' => $yazi_gorseli_normal, //
+                    'thumbnail_small' => $yazi_gorseli_medium == "" ? get_site_url() . "/wp-content/plugins/CurlyApp/assets/img/image-not-found.jpeg" : $yazi_gorseli_medium, //
+                    'thumbnail_full' => $yazi_gorseli_normal == "" ? get_site_url() .  "/wp-content/plugins/CurlyApp/assets/img/image-not-found.jpeg" : $yazi_gorseli_normal, //
                     'date' => $tarih, //
-                    'cat_id' => $kategori_id, //
+                    'cat_id' => $kategori_id[0], //
                     'cat_name' => $kategori_adi, //
                     'author_name' => $yazar_adi, //
                     'author_image' => $yazar_gorseli, //
@@ -64,7 +66,7 @@ function cr_get_posts() {
         $args_query = array(
             'order'          => 'DESC',
             'cat'            => $data[0]->mansetAlt, // Kategori ID si
-            'posts_per_page' => 3, // Çekilecek yazı adeti
+            'posts_per_page' => 4, // Çekilecek yazı adeti
         );
         $query = new WP_Query( $args_query );
         $mansetalt = array();
@@ -88,13 +90,14 @@ function cr_get_posts() {
                     'id' =>  $icerik_id, //
                     'title' => $title, //
                     'url' => $url, //
+                    'app_name' => $app_name, //
                     'logo_url' => $logo_url, //
                     'post_style' => $post_style, //
                     'content' => $icerik, //
-                    'thumbnail_small' => $yazi_gorseli_medium, //
-                    'thumbnail_full' => $yazi_gorseli_normal, //
+                    'thumbnail_small' => $yazi_gorseli_medium == "" ? get_site_url() . "/wp-content/plugins/CurlyApp/assets/img/image-not-found.jpeg" : $yazi_gorseli_medium, //
+                    'thumbnail_full' => $yazi_gorseli_normal == "" ? get_site_url() .  "/wp-content/plugins/CurlyApp/assets/img/image-not-found.jpeg" : $yazi_gorseli_normal, //
                     'date' => $tarih, //
-                    'cat_id' => $kategori_id, //
+                    'cat_id' => $kategori_id[0], //
                     'cat_name' => $kategori_adi, //
                     'author_name' => $yazar_adi, //
                     'author_image' => $yazar_gorseli, //
@@ -105,7 +108,7 @@ function cr_get_posts() {
         $args_query = array(
             'order'          => 'DESC',
             'cat'            => $data[0]->hikayeBuyuk, // Kategori ID si
-            'posts_per_page' => 3, // Çekilecek yazı adeti
+            'posts_per_page' => 4, // Çekilecek yazı adeti
         );
         $query = new WP_Query( $args_query );
         $hikayeBuyuk = array();
@@ -129,13 +132,14 @@ function cr_get_posts() {
                     'id' =>  $icerik_id, //
                     'title' => $title, //
                     'url' => $url, //
+                    'app_name' => $app_name, //
                     'logo_url' => $logo_url, //
                     'post_style' => $post_style, //
                     'content' => $icerik, //
-                    'thumbnail_small' => $yazi_gorseli_medium, //
-                    'thumbnail_full' => $yazi_gorseli_normal, //
+                    'thumbnail_small' => $yazi_gorseli_medium == "" ? get_site_url() . "/wp-content/plugins/CurlyApp/assets/img/image-not-found.jpeg" : $yazi_gorseli_medium, //
+                    'thumbnail_full' => $yazi_gorseli_normal == "" ? get_site_url() .  "/wp-content/plugins/CurlyApp/assets/img/image-not-found.jpeg" : $yazi_gorseli_normal, //
                     'date' => $tarih, //
-                    'cat_id' => $kategori_id, //
+                    'cat_id' => $kategori_id[0], //
                     'cat_name' => $kategori_adi, //
                     'author_name' => $yazar_adi, //
                     'author_image' => $yazar_gorseli, //
@@ -148,7 +152,7 @@ function cr_get_posts() {
         $args_query = array(
             'order'          => 'DESC',
             'cat'            => $data[0]->hikayeAlt, // kategori ID si
-            'posts_per_page' => 3, // Çekilecek yazı adeti
+            'posts_per_page' => 4, // Çekilecek yazı adeti
         );
         $query = new WP_Query( $args_query );
         $hikayeAlt = array();
@@ -172,13 +176,14 @@ function cr_get_posts() {
                     'id' =>  $icerik_id, //
                     'title' => $title, //
                     'url' => $url, //
+                    'app_name' => $app_name, //
                     'logo_url' => $logo_url, //
                     'post_style' => $post_style, //
                     'content' => $icerik, //
-                    'thumbnail_small' => $yazi_gorseli_medium, //
-                    'thumbnail_full' => $yazi_gorseli_normal, //
+                    'thumbnail_small' => $yazi_gorseli_medium == "" ? get_site_url() . "/wp-content/plugins/CurlyApp/assets/img/image-not-found.jpeg" : $yazi_gorseli_medium, //
+                    'thumbnail_full' => $yazi_gorseli_normal == "" ? get_site_url() .  "/wp-content/plugins/CurlyApp/assets/img/image-not-found.jpeg" : $yazi_gorseli_normal, //
                     'date' => $tarih, //
-                    'cat_id' => $kategori_id, //
+                    'cat_id' => $kategori_id[0], //
                     'cat_name' => $kategori_adi, //
                     'author_name' => $yazar_adi, //
                     'author_image' => $yazar_gorseli, //
@@ -190,12 +195,12 @@ function cr_get_posts() {
 
     wp_reset_postdata();
 
-    $son[] = array(
+    $son = array(
         $manset,
         $mansetalt,
         $hikayeBuyuk,
-        $hikayeAlt,
-        $settings
+        $hikayeAlt
+        //$settings
     );
     return $son;
 }

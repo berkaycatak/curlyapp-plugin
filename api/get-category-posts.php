@@ -22,7 +22,7 @@ function cr_get_category_posts()
     $args_query = array(
         'order'          => 'DESC',
         'cat'            => $category_id, // kategori ID si
-        'posts_per_page' => 10, //Çekilecek yazı adeti
+        'posts_per_page' => 30, //Çekilecek yazı adeti
         'paged' => $page
     );
     $query = new WP_Query( $args_query );
@@ -51,7 +51,7 @@ function cr_get_category_posts()
                 'thumbnail_small' => $yazi_gorseli_medium, //
                 'thumbnail_full' => $yazi_gorseli_normal, //
                 'date' => $tarih, //
-                'cat_id' => $kategori_id, //
+                'cat_id' => $kategori_id[0], //
                 'cat_name' => $kategori_adi, //
                 'author_name' => $yazar_adi, //
                 'author_image' => $yazar_gorseli, //
