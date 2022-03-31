@@ -10,12 +10,14 @@ require_once __DIR__ . "/pages/social-media-settings.php";
 require_once __DIR__ . "/pages/categories-settings.php";
 require_once __DIR__ . "/pages/pages-settings.php";
 require_once __DIR__ . "/pages/home-settings.php";
+require_once __DIR__ . "/pages/firebase-notification.php";
 
 //assets
-if (!file_exists("api"))
+$current_url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+if (strpos($current_url,'wp-json') == false && strpos($current_url,'api') == false)
 {
-    //echo '<link rel="stylesheet" href="/wp-content/plugins/CurlyApp/assets/css/style.css">';
-    //echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">';
+    echo '<link rel="stylesheet" href="/wp-content/plugins/CurlyApp/assets/css/style.css">';
+    echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">';
 }
 
 // api

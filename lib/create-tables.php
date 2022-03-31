@@ -8,6 +8,7 @@ function create_tables()
             app_name VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
             logo_url TEXT CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
             post_style INT NOT NULL,
+            cloud_messaging_server_key TEXT NULL,
             PRIMARY KEY (id)
         );");
 

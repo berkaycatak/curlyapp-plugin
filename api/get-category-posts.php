@@ -33,6 +33,7 @@ function cr_get_category_posts()
             // Post bilgileri başlangıç
             $icerik_id = get_the_ID();
             $title = get_the_title();
+            $url = get_permalink();
             $icerik = get_the_content();
             $yazi_gorseli_medium = get_the_post_thumbnail_url( get_the_ID(), 'medium' );
             $yazi_gorseli_normal = get_the_post_thumbnail_url( get_the_ID(), 'full' );
@@ -45,11 +46,12 @@ function cr_get_category_posts()
             $manset[] = array(
                 'id' =>  $icerik_id, //
                 'title' => $title, //
+                'url' => $url, //
                 'logourl' => $logourl, //
                 'postStil' => $postStil, //
                 'icerik' => $icerik, //
-                'thumbnail_small' => $yazi_gorseli_medium, //
-                'thumbnail_full' => $yazi_gorseli_normal, //
+                'thumbnail_small' => !$yazi_gorseli_medium ? get_site_url() . "/wp-content/plugins/CurlyApp/assets/img/image-not-found.jpeg" : $yazi_gorseli_medium, //
+                'thumbnail_full' => !$yazi_gorseli_normal ? get_site_url() .  "/wp-content/plugins/CurlyApp/assets/img/image-not-found.jpeg" : $yazi_gorseli_normal, //
                 'date' => $tarih, //
                 'cat_id' => $kategori_id[0], //
                 'cat_name' => $kategori_adi, //

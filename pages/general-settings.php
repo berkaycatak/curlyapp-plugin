@@ -11,12 +11,14 @@ function general_settings_page_content()
             $app_name = stripslashes_deep($_POST['app_name']);
             $logo_url = stripslashes_deep($_POST['logo_url']);
             $style_id = stripslashes_deep($_POST['style_id']);
+            $cloud_messaging_server_key = stripslashes_deep($_POST['cloud_messaging_server_key']);
 
             $ok = $wpdb->update($wpdb->prefix."curlyapp_settings",
                 array(
                     'app_name'      => $app_name,
                     'logo_url'      => $logo_url,
-                    'post_style'    => $style_id
+                    'post_style'    => $style_id,
+                    'cloud_messaging_server_key' => $cloud_messaging_server_key
                 ), array('id'=> 1)
             );
 
@@ -34,6 +36,7 @@ function general_settings_page_content()
         $app_name = $settings->app_name;
         $logo_url = $settings->logo_url;
         $style_id = $settings->post_style;
+        $cloud_messaging_server_key = $settings->cloud_messaging_server_key;
     }
 
 
@@ -55,6 +58,11 @@ function general_settings_page_content()
                 <div class="form-group">
                     <label class="control-label" for="pwd">Uygulamada gözükecek logo:</label>
                     <input type="text" name="logo_url" class="form-control" value="<?=$logo_url?>" placeholder="Örnek: https://www.site.com/logo.png">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="cloud_messaging_server_key">Firebase Cloud Messaging API (Server Key):</label>
+                    <input type="text" name="cloud_messaging_server_key" id="cloud_messaging_server_key" class="form-control" value="<?=$cloud_messaging_server_key?>">
+                    <small><b>Nasıl yapılır?:</b> Key'e ulaşmak için: Firebase hesabınıza giriş yapın, oluşturulan projeye girin, Firebase logosu altındaki ayarlar butonuna tıklatın, "project settings" sekmesine girin, "Cloud Messaging" sekmesine geçin "Cloud Messaging API (Legacy)" altında bulunan "Server key"i aşağıya yapıştırın. </small>
                 </div>
                 <hr>
                 <h3>Post Sayfası Ayarları</h3>
@@ -94,7 +102,6 @@ function general_settings_page_content()
                     <div class="col-sm-offset-2 ">
                         <input type="submit" class="btn btn-info" value="Kaydet" name="save"><br>
                         <p><i>Not:</i> Ayarların uygulamanızda aktif olması için uygulamanızda anasayfayı yenilemeyi, uygulamadan çıkıp tekrar girmeyi unutmayın :)</p>
-
                     </div>
                 </div>
             </form>
