@@ -73,28 +73,28 @@ function general_settings_page_content()
                             <input type="radio" id="no1" name="style_id" value="1" <?=$style_id == 1 ? 'checked' : ''?> >
                             <label for="no1">Görünüm no: 1</label>
                         </h5>
-                        <img style="width: 100%" src="https://www.kisavoz.com/1.png">
+                        <img style="width: 90%" src=/wp-content/plugins/CurlyApp/assets/img/stil1-light.png">
                     </div>
                     <div class="col-md-6 col-lg-3">
                         <h5>
                             <input type="radio" id="no2" name="style_id" value="2" <?=$style_id == 2 ? 'checked' : ''?> >
                             <label for="no2">Görünüm no: 2</label>
                         </h5>
-                        <img style="width: 100%" src="https://www.kisavoz.com/2.png">
+                        <img style="width: 90%" src="/wp-content/plugins/CurlyApp/assets/img/stil2-light.png">
                     </div>
                     <div class="col-md-6 col-lg-3">
                         <h5>
                             <input type="radio" id="no3" name="style_id" value="3" <?=$style_id == 3 ? 'checked' : ''?> >
                             <label for="no3">Görünüm no: 3</label>
                         </h5>
-                        <img style="width: 100%" src="https://www.kisavoz.com/3.png">
+                        <img style="width: 90%" src="/wp-content/plugins/CurlyApp/assets/img/stil3-light.png">
                     </div>
                     <div class="col-md-6 col-lg-3">
                         <h5>
                             <input type="radio" id="no4" name="style_id" value="4" <?=$style_id == 4 ? 'checked' : ''?> >
                             <label for="no4">Görünüm no: 4</label>
                         </h5>
-                        <img style="width: 100%" src="https://www.kisavoz.com/4.png">
+                        <img style="width: 90%" src="/wp-content/plugins/CurlyApp/assets/img/stil4-light.png">
                     </div>
                 </div>
                 <br>
