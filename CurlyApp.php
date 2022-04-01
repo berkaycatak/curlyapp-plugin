@@ -7,7 +7,7 @@ Description: Wordpress plugin required for CurlyApp Mobile App to work.
 Version: 1.0
 Author: Berkay Çatak
 Author URI: https://github.com/berkaycatak/
-License: CC BY-NC
+License: GPL
 */
 
 // init dosyası import ediliyor

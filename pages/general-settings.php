@@ -84,28 +84,28 @@ function general_settings_page_content()
                         <input type="radio" id="no1" name="style_id" value="1" <?=$style_id == 1 ? 'checked' : ''?> >
                         <label for="no1">Görünüm no: 1</label>
                     </h5>
-                    <img style="width: 90%" src=/wp-content/plugins/CurlyApp/assets/img/stil1-light.png">
+                    <img style="width: 90%" src="https://user-images.githubusercontent.com/34205493/161326220-7d575358-ebc5-4075-8c72-a431225dfa92.png">
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <h5>
                         <input type="radio" id="no2" name="style_id" value="2" <?=$style_id == 2 ? 'checked' : ''?> >
                         <label for="no2">Görünüm no: 2</label>
                     </h5>
-                    <img style="width: 90%" src="/wp-content/plugins/CurlyApp/assets/img/stil2-light.png">
+                    <img style="width: 90%" src="https://user-images.githubusercontent.com/34205493/161325955-bf8348e8-5999-4e18-8905-04b3a848cf95.png">
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <h5>
                         <input type="radio" id="no3" name="style_id" value="3" <?=$style_id == 3 ? 'checked' : ''?> >
                         <label for="no3">Görünüm no: 3</label>
                     </h5>
-                    <img style="width: 90%" src="/wp-content/plugins/CurlyApp/assets/img/stil3-light.png">
+                    <img style="width: 90%" src="https://user-images.githubusercontent.com/34205493/161326131-76d0ed7f-afef-4a68-a46b-f81720861bb0.png">
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <h5>
                         <input type="radio" id="no4" name="style_id" value="4" <?=$style_id == 4 ? 'checked' : ''?> >
                         <label for="no4">Görünüm no: 4</label>
                     </h5>
-                    <img style="width: 90%" src="/wp-content/plugins/CurlyApp/assets/img/stil4-light.png">
+                    <img style="width: 90%" src="https://user-images.githubusercontent.com/34205493/161325985-ca046e29-4a82-4181-9192-52b0aca3b125.png">
                 </div>
             </div>
             <br>
