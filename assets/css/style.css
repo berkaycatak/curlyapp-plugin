@@ -14,3 +14,19 @@ body{ background: #f0f0f1; font-family: 'Poppins' }
     font-size: 15px;
     margin-top: 3px;
 }
+.curly-head {
+    background: /*linear-gradient(45deg, #e26e18, #fd21a3)*/ #e26e18 url("/wp-content/plugins/CurlyApp/assets/img/pngwing.com.png") top center;
+    background-attachment: fixed;
+    background-blend-mode: soft-light;
+    margin: -20px -20px 20px -20px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 3px;
+}
+
+.curly-head p{
+    color: white;
+}
+
+.curly-head h1{
+    color: white;
+}

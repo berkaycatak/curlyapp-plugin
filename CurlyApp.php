@@ -3,11 +3,11 @@
 /*
 Plugin Name: CurlyApp
 Plugin URI: https://github.com/berkaycatak/curlyapp-plugin/
-Description: Wordpress plugin required for CurlyApp to work
+Description: Wordpress plugin required for CurlyApp Mobile App to work.
 Version: 1.0
 Author: Berkay Çatak
-Author URI: http://berkaycatak.com
-License: A "Slug" license name e.g. GPL2
+Author URI: https://github.com/berkaycatak/
+License: CC BY-NC
 */
 
 // init dosyası import ediliyor
